@@ -85,4 +85,4 @@ char,short ——>int——>unsigned——>long——>double */
     printf("x is smaller than y.");   //将输出此语句
   } else {
     printf("x is bigger than y.");   
-   }  */
+   }  
