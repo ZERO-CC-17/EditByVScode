@@ -1,5 +1,5 @@
-// 这是一个调试测试文件，您可以直接运行检测配置是否生效
-// 若配置任然无法调试，请查阅README_inProject.md
+﻿// 杩欐槸涓€涓皟璇曟祴璇曟枃浠讹紝鎮ㄥ彲浠ョ洿鎺ヨ繍琛屾娴嬮厤缃槸鍚︾敓鏁�
+// 鑻ラ厤缃换鐒舵棤娉曡皟璇曪紝璇锋煡闃匯EADME_inProject.md
 
 #include <stdio.h>
 #include <stdlib.h>
