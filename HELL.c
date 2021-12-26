@@ -1,4 +1,4 @@
-/*
+
 #include <stdio.h>
 
 void test1();//在main函数之前声明test函数，不然main函数没法调用。
@@ -14,12 +14,11 @@ void test1(){
     printf("%d\n",b);//可以使用变量b，因为处于变量b的作用域。
 }
 
-
 //函数声明与实现
 
-*/
 
-/*
+
+
 #include <stdio.h>
 int main(void) {
   const int vx = 10;
@@ -32,9 +31,9 @@ int main(void) {
     }
   }
 }
-*/
 
-/*
+
+
 #include <stdio.h>
 #define vx 10
 #define vy 10
@@ -52,18 +51,17 @@ int main(void) {
 
 //只读变量与字面量常量的一个最重要的不同点是，使用 const 修饰的只读变量不具有“常量表达式”的属性，因此无法用来表示定长数组大小，或使用在 case 语句中。常量表达式本身会在程序编译时被求值，而只读变量的值只能够在程序实际运行时才被得知。并且，编译器通常不会对只读变量进行内联处理，因此其求值不符合常量表达式的特征。
 
-*/
 
 
 
 //****************总之，程序在进行强制类型转换时，不会影响其底层数据的实际存储方式。***********//
-// #include <stdio.h>
-// int main(void) {
-//   signed char x = -10;            //存储的补码为   1 111 0110   （-10）
-//   unsigned char y = (unsigned char)x;   //强制转为无符号后，运算方式全变，八位存的均是正数，对应十六进制为 F6 ，对应十进制为246
-//   printf("%d\n", y);  // output: 246.
-//   return 0;
-// }
+#include <stdio.h>
+int main(void) {
+  signed char x = -10;            //存储的补码为   1 111 0110   （-10）
+  unsigned char y = (unsigned char)x;   //强制转为无符号后，运算方式全变，八位存的均是正数，对应十六进制为 F6 ，对应十进制为246
+  printf("%d\n", y);  // output: 246.
+  return 0;
+}
 
 
 //*****************  变量类型的隐式转换  ***************************//
@@ -76,14 +74,13 @@ int main(void) {
   } else {
     printf("x is bigger than y.");   // this branch is picked!，将输出此语句  X>Y 因为 x被强制转无符号数
    }
-  return 0;
 }
 
 /* 在进行运算时，以表达式中所占字节最多的数据类型为主，其他数据的类型均转换为这种数据类型，再进行运算。
 转换规则:
 char,short ——>int——>unsigned——>long——>double */
 
-/* 解决方法：运算判断时将y进行强制转为有符号数即可，即 if（x<(int)y）
+ 解决方法：运算判断时将y进行强制转为有符号数即可，即 if（x<(int)y）
  if (x<(int)y) {
     printf("x is smaller than y.");   //将输出此语句
   } else {
