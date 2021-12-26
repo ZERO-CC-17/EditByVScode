@@ -56,10 +56,36 @@ int main(void) {
 
 
 
+//****************总之，程序在进行强制类型转换时，不会影响其底层数据的实际存储方式。***********//
+// #include <stdio.h>
+// int main(void) {
+//   signed char x = -10;            //存储的补码为   1 111 0110   （-10）
+//   unsigned char y = (unsigned char)x;   //强制转为无符号后，运算方式全变，八位存的均是正数，对应十六进制为 F6 ，对应十进制为246
+//   printf("%d\n", y);  // output: 246.
+//   return 0;
+// }
+
+
+//*****************  变量类型的隐式转换  ***************************//
 #include <stdio.h>
 int main(void) {
-  signed char x = -10;
-  unsigned char y = (unsigned char)x;
-  printf("%d\n", y);  // output: 246.
+  int x = -10;    //C 中 常用数据变量 均是默认为有符号数 
+  unsigned int y = 1;      //程序逻辑在真正进入到条件语句之前，变量 x 的类型会首先被隐式转换为 unsigned int,原先存放有 -10 补码的位模式会被解释为一个十分庞大的正整数，而这个数则远远大于 1。
+  if (x < y) {
+    printf("x is smaller than y.");
+  } else {
+    printf("x is bigger than y.");   // this branch is picked!，将输出此语句  X>Y 因为 x被强制转无符号数
+   }
   return 0;
 }
+
+/* 在进行运算时，以表达式中所占字节最多的数据类型为主，其他数据的类型均转换为这种数据类型，再进行运算。
+转换规则:
+char,short ——>int——>unsigned——>long——>double */
+
+/* 解决方法：运算判断时将y进行强制转为有符号数即可，即 if（x<(int)y）
+ if (x<(int)y) {
+    printf("x is smaller than y.");   //将输出此语句
+  } else {
+    printf("x is bigger than y.");   
+   }  */
