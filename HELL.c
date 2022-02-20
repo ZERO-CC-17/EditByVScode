@@ -87,4 +87,50 @@ char,short ——>int——>unsigned——>long——>double
     printf("x is bigger than y.");   
    }  
 
+
+//为了在保持自身精简的同时也保证足够高的灵活性，C 语言在提供基本数值类型和指针类型的基础上，又为我们提供了结构（struct）、联合（union）与枚举（enum）这三种类型
+//************************************************枚举********************************************
+#include "stdio.h"
+// #define typename(x) _Generic((x), \
+// int: "int",\)
+typedef enum{
+  mon,tue,wed,thur,fri,
+} weekday;        //这里的weekday为枚举表示符号，mon\tue等是其可以表示的变量，变量大小是从0开始的排序的，类似Excel中的填充序列意思
+void foo(weekday wd){        //函数形参同时定义变量， wd为枚举标识符weekday定义的变量
+  if (wd == mon){
+    printf("the value of mon is: %d\n",tue);
+    //printf("the type of mon is: %s\n",typename(mon));
+
+  }
+}
+int main(void){
+  foo(mon);
+  return 0;
+}
 */
+
+//******************************  结构  *************************************
+#include <stdio.h>
+typedef struct{
+  char *p;
+  char c;
+  long x;
+} S;                  //结构 S
+
+int main(void){
+  char c ='a';
+  S s = {&c,'b',10};   //S结构体初始化
+  printf("%p\n%c\n%ld\n",s.p,s.c,s.x);         //注意结构体变量调用结构体的方式
+  printf("the size of S is : %ld bytes\n",sizeof(S));
+  printf("char       的字节数=%d\n",sizeof(char)); 
+  printf("long        的字节数=%d\n",sizeof(long)); 
+  printf("char指针       的字节数=%d\n",sizeof(char*));
+  printf("short int  的字节数=%d\n",sizeof(short));
+  printf("int        的字节数=%d\n",sizeof(int));
+  printf("int指针        的字节数=%d\n",sizeof(int*));
+  printf("long int   的字节数=%d\n",sizeof(long));
+ //浮点数都是带符号的(float和double总是带符号的)
+  printf("float      的字节数=%d\n",sizeof(float));
+  printf("double float的字节数=%d\n",sizeof(double));
+  return 0;
+}
